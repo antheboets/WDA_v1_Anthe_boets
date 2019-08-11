@@ -1,6 +1,6 @@
 <?php
-	include_once($_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/TacGen/Database/Database.php");
-
+    include_once($_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/eShop/Logic/lib.php");
+	include_once($path."Database/Database.php");
 	class DatabaseFactory{
 
 
