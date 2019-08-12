@@ -79,7 +79,7 @@ class UserDAO{
     {
         if(!is_null($row)){
             $shoppingCart = ShoppingCartDAO::getShoppingCartOfUser($row['UserId']);
-            return new User($row['UserId'],$row['Email'],$row['FirstName'],$row['LastName'],$shoppingCart,$row['Admin']);
+            return new User($row['UserId'],$row['Email'],$row['FirstName'],$row['LastName'],$shoppingCart,($row['Admin'] == 1 ? true : false));
         }
         return NULL;
     }
