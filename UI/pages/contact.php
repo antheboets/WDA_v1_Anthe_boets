@@ -16,11 +16,12 @@
     include($path."/UI/component/header.php");
     ?>
 
-    <form method="POST" action="../../logic/Mail.php">
+    <form method="POST" action="http://dtsl.ehb.be/~anthe.boets/eShop/logic/mail.php" id="mailForm">
+        <p class="noBreak">email</p>
         <input type="text" name="email">
         <input type="text" name="header">
-        <input type="text" name="body">
-        <input type="submit" name="send" value="send">
+        <textarea rows="10" cols="100" name="body" form="mailForm"></textarea>
+        <input type="submit" name="send" value="Send">
     </form>
     </body>
 </html>
