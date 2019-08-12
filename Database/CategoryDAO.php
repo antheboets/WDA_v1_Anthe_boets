@@ -10,5 +10,22 @@ class CategoryDAO{
         }
         return false;
     }
+    public static function getAllCategorys(){
+        $rows = DatabaseFactory::getDatabase()->executeQuery("SELECT * FROM Category");
+        return self::convertRowsToObject($rows);
+    }
+    private static function convertRowsToObject($rows)
+    {
+        if(!is_null($rows)){
+            $categorys = [];
+            foreach ($rows as $row)
+            {
+                $categorys[] =  new Category($row['CategoryId'],$row['Name']);
+            }
+            return $categorys;
+        }
+        return NULL;
+    }
+
 }
 ?>
