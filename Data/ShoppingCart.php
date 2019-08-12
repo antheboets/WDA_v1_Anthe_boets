@@ -12,6 +12,14 @@ include_once($path."Data/ShoppingCartItem.php");
         }
 
 
+        public function countTotal(){
+            $total = 0;
+
+            foreach ($this->items as $item){
+                $total += $item->amount * $item->product->price;
+            }
+            return $total;
+        }
     }
 
 
