@@ -1,9 +1,9 @@
 <?php
-
+include_once($_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/eShop/Logic/lib.php");
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include_once($_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/TacGen/database/UserDAO.php");
+include_once($path."database/UserDAO.php");
 
 if(isset($_COOKIE['autoLogin'])){
 	if(!empty($_COOKIE['autoLogin'])){

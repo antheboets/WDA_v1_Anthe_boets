@@ -1,4 +1,7 @@
 <?php
+    //for include
+    $path = $_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/eShop/";
+    $headerPath = "/~anthe.boets/eShop/";
 	//https://stackoverflow.com/questions/4356289/php-random-string-generator
 	function generateRandomString($length = 10) {
 	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
