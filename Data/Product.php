@@ -28,5 +28,16 @@ include_once($path."Data/Category.php");
 
 
 
+        public function drawImage($height, $width, $alt){
+            $base64 = 'data:image/;base64,' . base64_encode($this->image);
+            echo "<img ";
+            if($height !=0){
+                echo "height='" .$height."'";
+            }
+            if($width !=0){
+                echo "width='".$width."'";
+            }
+            echo "alt='".$alt."' src='".$base64."'/>";
+        }
     }
 ?>
