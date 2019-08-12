@@ -29,13 +29,13 @@
   			<div class="modal-body">
   				<form action="Logic/Login.php" method="POST" id="fLogin">
   					<p class="error noBreak" style="display: none;"></p>
-            <p class="noBreak">Email:</p>
+                    <p class="noBreak">Email:</p>
   					<input type="input" name="email" id="loginEmail">
   					<p class="noBreak">Password:</p>
   					<input type="password" name="password" id="loginPassword">
-            <br>
-            Stay logged in:
-            <input type="checkbox" name="stayLogedIn" id="stayLogedIn">
+                    <br>
+                    Stay logged in:
+                    <input type="checkbox" name="stayLogedIn" id="stayLogedIn">
   				</form>
   			</div>
   			<div class="modal-footer">
