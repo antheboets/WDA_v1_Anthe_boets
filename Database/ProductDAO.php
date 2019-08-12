@@ -9,7 +9,8 @@ class ProductDAO
 {
     public static function create($product)
     {
-        return DatabaseFactory::getDatabase()->executeQuery("INSERT INTO Product VALUES (NULL,'?','?','?','?','?',0);", array($product->name,$product->description,$product->image,$product->price,$product->categorie->id));
+        var_dump(array($product->name,$product->description,$product->image,$product->price,$product->category->id));
+        return DatabaseFactory::getDatabase()->executeQuery("INSERT INTO Product VALUES (NULL,'?','?','?','?','?',0,SYSDATE());", array($product->name,$product->description,$product->image,$product->price,$product->category->id));
     }
     /*
     public static function getAll(){
