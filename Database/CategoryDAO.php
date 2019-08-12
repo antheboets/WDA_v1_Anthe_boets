@@ -3,10 +3,11 @@ include_once($_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/eShop/Logic/lib
 include_once($path."Data/Category.php");
 include_once($path."Database/DatabaseFactory.php");
 class CategoryDAO{
-    public static function IsCategory($categorty){
-        $result = DatabaseFactory::getDatabase()->executeQuery("SELECT CategoryId FROM Categorty WHERE CategortyId = '?';", array($categorty->Id));
-        if(!is_null($result)){
-            return self::convertRowToObject(mysqli_fetch_array($result));
+    public static function IsCategory($category){
+        var_dump($category);
+        $row = DatabaseFactory::getDatabase()->executeQuery("SELECT CategoryId FROM Categorty WHERE CategortyId = '?';", array($category->id));
+        if(!is_null($row)){
+            return true;
         }
         return false;
     }
