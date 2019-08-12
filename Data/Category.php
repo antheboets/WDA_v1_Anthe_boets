@@ -9,6 +9,8 @@ class Category{
         $this->name = $name;
     }
 
-
+    public function  drawOption(){
+        echo "<option value='".$this->id."'>".$this->name."</option>";
+    }
 }
 ?>
