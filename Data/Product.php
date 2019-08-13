@@ -29,6 +29,16 @@ include_once($path."Data/Category.php");
             return "http://dtsl.ehb.be/~anthe.boets/eShop/";
         }
 
+        public function drawMainMenu(){
+            echo "<div id='".$this->id."' class='Product'>";
+            echo "<a href='". $this::getUrl() ."UI/pages/details.php?id=".$this->id."'>";
+            $this->drawImage(200,0,$this->name, "col-md-12 ProductImg");
+            echo "<p class='noBreak '>Name: ".$this->name."</p>";
+            echo "<p class='noBreak'>Categorty: ".$this->category->name."</p>";
+            echo "<p class='noBreak'>Price: ".$this->price."</p>";
+            echo "</a>";
+            echo "</div>";
+        }
         public function drawImage($height, $width, $alt, $class){
             $base64 = 'data:image/;base64,' . base64_encode($this->image);
             echo "<img ";
