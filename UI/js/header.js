@@ -37,7 +37,7 @@ $(document).ready(function() {
 		if(isAdmin()){
 			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bAddProduct">Product Over View</a></li>');
 			$('#bAddProduct').click(function(){
-				productOverView();
+				addProduct();
 			});
 		}
 	}
@@ -58,6 +58,7 @@ $(document).ready(function() {
 		
 		resetSignUp();
 		if(checkSingUp()){
+			document.getElementById("signUpUrl").value = window.location.href;
 			$('#fSignUp').submit();
 		}
 	}
@@ -105,6 +106,7 @@ $(document).ready(function() {
 	function login(){
 		resetLogin();
 		if(checkLogin()){
+			document.getElementById("loginUrl").value = window.location.href;
 			$('#fLogin').submit();
 		}
 	}
