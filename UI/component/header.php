@@ -15,6 +15,9 @@
     			<a class="nav-link" href="http://dtsl.ehb.be/~anthe.boets/eShop/UI/pages/contact.php">Contact</a>
   			</li>
 		</ul>
+        <ul class="navbar-nav ml-auto">
+            <span class="navbar-text" id="banner"></span>
+        </ul>
 	</div>
 </nav>
 <div class="modal" tabindex="-1" role="dialog" id="mLogin">
