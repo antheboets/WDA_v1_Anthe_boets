@@ -10,6 +10,8 @@ $(document).ready(function() {
 
 	createButtonsForheader();
 
+	document.getElementById('banner').innerText =  getNameUser();
+
 	function createButtonsForheader(){
 		if(isLogedIn()){
 			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bLogin">Login</a></li>');
@@ -19,8 +21,8 @@ $(document).ready(function() {
 			
 			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bSignUp">Sign Up</a></li>');
 			$("#bSignUp").click(function(){
-						openMSignUp();
-					});
+				openMSignUp();
+			});
 		}
 		else{
 			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bLogout">Logout</a></li>');
@@ -29,20 +31,28 @@ $(document).ready(function() {
 			});
 			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bSettings">Settings</a></li>');
 			$('#bSettings').click(function(){
-				Settings();
+				settings();
+			});
+		}
+		if(isAdmin()){
+			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bAddProduct">Product Over View</a></li>');
+			$('#bAddProduct').click(function(){
+				productOverView();
 			});
 		}
 	}
 
-	function Settings(){
-		window.location.href = "UI/Pages/Settings.php";
+	function settings(){
+		window.location.href = url + "UI/Pages/Settings.php";
 	}
-	
-	
 
 	function logout(){
-		window.location.href = "Logic/logout.php";
+		window.location.href = url +"Logic/logout.php";
 	}
+	function addProduct() {
+		window.location.href = url +"UI/allProducts.php";
+	}
+
 
 	function signUp(){
 		
