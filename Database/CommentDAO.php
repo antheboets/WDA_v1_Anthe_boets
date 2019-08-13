@@ -17,17 +17,17 @@ class CommentDAO{
                     for($i = 0; $i < sizeof($comments); $i++ ){
                         if($comments[$i]->id == $row['ReplyId']){
                             $foundReplyHost = true;
-                            $replyComment = new Comment($row['CommentId'],$row['Text'],$row['FirstName'] . $row['LastName'],$row['Rating'],[],$row['CreationTime']);
+                            $replyComment = new Comment($row['CommentId'],$row['Text'],($row['FirstName'] ." ".$row['LastName']),$row['Rating'],[],$row['CreationTime']);
                             $comments[$i]->replys[] = $replyComment;
                             break;
                         }
                     }
                     if(!$foundReplyHost){
-                        $comments[] = new Comment($row['CommentId'],$row['Text'],$row['FirstName'] . $row['LastName'],$row['Rating'],[],$row['CreationTime']);
+                        $comments[] = new Comment($row['CommentId'],$row['Text'],($row['FirstName'] ." ".$row['LastName']),$row['Rating'],[],$row['CreationTime']);
                     }
                 }
                 else{
-                    $comments[] = new Comment($row['CommentId'],$row['Text'],$row['FirstName'] . $row['LastName'],$row['Rating'],[],$row['CreationTime']);
+                    $comments[] = new Comment($row['CommentId'],$row['Text'],($row['FirstName'] ." ".$row['LastName']),$row['Rating'],[],$row['CreationTime']);
                 }
             }
             return $comments;
