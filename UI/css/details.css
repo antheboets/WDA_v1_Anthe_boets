@@ -1,0 +1,18 @@
+.comment{
+    border: black 1px solid;
+}
+.replys{
+     padding-left: 20px;
+ }
+.commentInfo{
+
+}
+.commentText{
+    border-left: black 1px solid;
+}
+.commentLight{
+    background-color: #E3E3E3;
+}
+.commentDark{
+    background-color: #b1b1b1;
+}
