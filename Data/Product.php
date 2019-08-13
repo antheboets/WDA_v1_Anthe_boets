@@ -25,12 +25,16 @@ include_once($path."Data/Category.php");
             $this->archived = $archived;
         }
 
+        private static function getUrl(){
+            return "http://dtsl.ehb.be/~anthe.boets/eShop/";
+        }
 
-
-
-        public function drawImage($height, $width, $alt){
+        public function drawImage($height, $width, $alt, $class){
             $base64 = 'data:image/;base64,' . base64_encode($this->image);
             echo "<img ";
+            if($class != ""){
+                echo "class='".$class."'";
+            }
             if($height !=0){
                 echo "height='" .$height."'";
             }
