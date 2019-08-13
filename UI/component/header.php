@@ -27,7 +27,7 @@
     			</button>
   			</div>
   			<div class="modal-body">
-  				<form action="Logic/Login.php" method="POST" id="fLogin">
+  				<form action="<?php echo $url ;?>Logic/Login.php" method="POST" id="fLogin">
   					<p class="error noBreak" style="display: none;"></p>
                     <p class="noBreak">Email:</p>
   					<input type="input" name="email" id="loginEmail">
@@ -36,6 +36,7 @@
                     <br>
                     Stay logged in:
                     <input type="checkbox" name="stayLogedIn" id="stayLogedIn">
+                    <input type="hidden" name="url" id="loginUrl">
   				</form>
   			</div>
   			<div class="modal-footer">
@@ -55,7 +56,7 @@
     			</button>
   			</div>
   			<div class="modal-body">
-  				<form action="Logic/signUp.php" method="POST" id="fSignUp">
+  				<form action="<?php echo $url ;?>Logic/signUp.php" method="POST" id="fSignUp">
   					<p class="error noBreak" style="display: none;"></p>
   					<p class="noBreak">Firstname:</p>
   					<input type="input" name="firstname" id="sigUpFirstname">
@@ -67,6 +68,7 @@
   					<input type="password" name="password" id="signUpPassword">
   					<p class="noBreak">Re-Password:</p>
   					<input type="password" name="rePassword" id="signUpRePassword">
+                    <input type="hidden" name="url" id="signUpUrl">
   				</form>
   			</div>
   			<div class="modal-footer">

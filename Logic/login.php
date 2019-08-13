@@ -4,33 +4,38 @@
 	include_once($path."database/UserDAO.php");
     include_once($path."database/UserDAO.php");
 
-	if($_SERVER["REQUEST_METHOD"] == 'POST'){
-		if(isset($_POST['email']) && isset($_POST['password'])){
-			if(!empty($_POST['email']) && !empty($_POST['password'])){
 
-				$emailCheck = true;
-				//checkEmail;
-				
-				if(isset($_POST['stayLogedIn'])){
-					setcookie('autoLogin', $_POST['email'],2147483647 ,"/");
-				}
-				
-				if(!validateEmail($_POST['email'])){
-					$emailCheck = false;
-				}
+    header("location: ".$headerPath."index.php");
+	if($_SERVER["REQUEST_METHOD"] == 'POST') {
+        if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['url'])) {
+            if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['url'])) {
 
-				if($emailCheck){
+                $emailCheck = true;
+                //checkEmail;
 
-					$salt = UserDAO::getSaltFromUser($_POST['email']);
-					$hash = hash('sha512',$_POST['password'] . $salt);
-					$user = UserDAO::checkCredentials($_POST['email'],$hash);
-					if(!is_null($user)){
-						$_SESSION['user'] = $user;
-						header("location: ".$headerPath."index.php");
-					}
-				}
-			}
-		}
-	}
-	header("location: ".$headerPath."index.php");
+                if (isset($_POST['stayLogedIn'])) {
+                    setcookie('autoLogin', $_POST['email'], 2147483647, "/");
+                }
+
+                if (!validateEmail($_POST['email'])) {
+                    $emailCheck = false;
+                }
+
+                if ($emailCheck) {
+
+                    $salt = UserDAO::getSaltFromUser($_POST['email']);
+                    $hash = hash('sha512', $_POST['password'] . $salt);
+                    $user = UserDAO::checkCredentials($_POST['email'], $hash);
+
+
+                    header("location: " . $_POST['url']);
+
+                    if (!is_null($user)) {
+                        $_SESSION['user'] = $user;
+                    }
+                }
+            }
+        }
+    }
+
 ?>
