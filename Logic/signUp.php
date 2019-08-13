@@ -8,6 +8,9 @@
 	if($_SERVER["REQUEST_METHOD"] == 'POST'){
 		if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rePassword']) && isset($_POST['url'])){
 			if(!empty($_POST['firstname']) && isset($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['rePassword']) && !empty($_POST['url'])){
+
+                header("location: ".$_POST['url']);
+
 				$passwordCheck = true;
 				//checkPass
 				if($_POST['password'] != $_POST['rePassword']){
@@ -27,7 +30,7 @@
 
 				if($passwordCheck && $emailCheck){
 					$salt = generateRandomString(16);
-                    header("location: ".$_POST['url']);
+
 					//http://php.net/manual/en/function.hash.php
 					$hash = hash('sha512',$_POST['password'] . $salt);
 

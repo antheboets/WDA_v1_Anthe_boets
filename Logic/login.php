@@ -10,6 +10,8 @@
         if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['url'])) {
             if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['url'])) {
 
+                header("location: " . $_POST['url']);
+
                 $emailCheck = true;
                 //checkEmail;
 
@@ -28,7 +30,7 @@
                     $user = UserDAO::checkCredentials($_POST['email'], $hash);
 
 
-                    header("location: " . $_POST['url']);
+
 
                     if (!is_null($user)) {
                         $_SESSION['user'] = $user;
