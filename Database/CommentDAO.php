@@ -11,20 +11,9 @@ class CommentDAO{
     private static function convertRowToObject($rows){
         if(!is_null($rows)){
             $comments = [];
-            $foundReplyHost = false;
             foreach ($rows as $row){
                 if(!is_null($row['ReplyId'])) {
-                    /*for($i = 0; $i < sizeof($comments); $i++ ){
-                        if($comments[$i]->id == $row['ReplyId']){
-                            $foundReplyHost = true;
-                            $replyComment = new Comment($row['CommentId'],$row['Text'],($row['FirstName'] ." ".$row['LastName']),$row['Rating'],[],$row['CreationTime']);
-                            $comments[$i]->replys[] = $replyComment;
-                            break;
-                        }
-                    }
-                    if(!$foundReplyHost){
-                        $comments[] = new Comment($row['CommentId'],$row['Text'],($row['FirstName'] ." ".$row['LastName']),$row['Rating'],[],$row['CreationTime']);
-                    }*/
+
                     $replyComment = new Comment($row['CommentId'],$row['Text'],($row['FirstName'] ." ".$row['LastName']),$row['Rating'],[],$row['CreationTime']);
                     $returnVal = self::putReplyInComment($comments,$replyComment,$row['ReplyId']);
                     $comments = $returnVal[1];
@@ -39,16 +28,6 @@ class CommentDAO{
     }
     private static function putReplyInComment($comments,$commentNew,$id){
         $found = false;
-        /*
-        for($i = 0; $i < sizeof($comments); $i++ ) {
-            if($comments[$i]->id == $id){
-                $found = true;
-                $comments[]->replys[] = $commentNew;
-                return array($found,$comments);
-                break;
-            }
-        }
-        */
         foreach ($comments as $comment){
             if($comment->id == $id){
                 $found = true;
@@ -60,7 +39,6 @@ class CommentDAO{
         foreach ($comments as $comment){
             $returnVal = self::putReplyInComment($comment->replys,$commentNew,$id);
             if($returnVal[0]){
-                //$comment->replys[] = $commentNew;
                 $found = true;
                 return(array($found,$comments));
             }
