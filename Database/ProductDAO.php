@@ -9,6 +9,7 @@ class ProductDAO
 {
     public static function create($product)
     {
+
         var_dump(array($product->name,$product->description,$product->image,$product->price,$product->category->id));
         return DatabaseFactory::getDatabase()->executeQuery("INSERT INTO Product VALUES (NULL,'?','?','?','?','?',0,SYSDATE());", array($product->name,$product->description,$product->image,$product->price,$product->category->id));
     }
@@ -19,8 +20,8 @@ class ProductDAO
     }*/
     public static function getById($porductId)
     {
-        $row = DatabaseFactory::getDatabase()->executeQuery("SELECT P.*, C.CategoryId, C.Name as CategoryName FROM Product as P INNER JOIN Category as CA on(P.CategoryId=CA.CategoryId) WHERE P.ProductId = '?';",array($porductId));
-        return self::convertRowToObjectFull($row);
+        $row = DatabaseFactory::getDatabase()->executeQuery("SELECT P.*, C.CategoryId , C.Name as CategoryName FROM Product as P INNER JOIN Category as C on(P.CategoryId=C.CategoryId) WHERE P.ProductId = '?' AND Archived = 0;",array($porductId));
+        return self::convertRowToObjectFull(mysqli_fetch_array($row));
     }
     public static function archive($product)
     {
