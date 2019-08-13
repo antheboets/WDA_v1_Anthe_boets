@@ -4,6 +4,7 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 
 }
+let url = "http://dtsl.ehb.be/~anthe.boets/eShop/";
 //https://stackoverflow.com/questions/3885817/how-do-i-check-that-a-number-is-float-or-integer
 function isInt(n){
     return Number(n) === n && n % 1 === 0;
