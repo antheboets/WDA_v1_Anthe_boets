@@ -33,9 +33,16 @@ include_once($path."Data/Category.php");
             echo "<div id='".$this->id."' class='Product'>";
             echo "<a href='". $this::getUrl() ."UI/pages/details.php?id=".$this->id."'>";
             $this->drawImage(200,0,$this->name, "col-md-12 ProductImg");
-            echo "<p class='noBreak '>Name: ".$this->name."</p>";
-            echo "<p class='noBreak'>Categorty: ".$this->category->name."</p>";
-            echo "<p class='noBreak'>Price: ".$this->price."</p>";
+            echo "<p class='noBreak ProductText'>Name: ".$this->name."</p>";
+            echo "<p class='noBreak ProductText'>Price: ".$this->price."</p>";
+            echo "<p class='noBreak ProductText'>Categorty: ".$this->category->name."</p>";
+            if(sizeof($this->rating) == 0){
+                echo "<p class='noBreak ProductText'>Rating: None</p>";
+            }
+            else{
+                echo "<p class='noBreak ProductText'>Rating: ".$this->calcRating()."/10</p>";
+            }
+            echo "<button class='buyBtn ProductText'><a>Buy</a></button>";
             echo "</a>";
             echo "</div>";
         }
