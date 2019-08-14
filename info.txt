@@ -1,0 +1,22 @@
+repo
+https://github.com/antheboets/WDA_v1_Anthe_boets
+-----------------------------
+Users
+Admin
+admin@test.com
+123
+User
+user@test.com
+-----------------------------
+bronnen
+
+html/css
+https://getbootstrap.com/
+
+php api
+https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html
+
+files uploaden en saven naar db
+https://github.com/taniarascia/upload
+https://www.taniarascia.com/how-to-upload-files-to-a-server-with-plain-javascript-and-php/
+
