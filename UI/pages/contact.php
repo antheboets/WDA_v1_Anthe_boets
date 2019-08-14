@@ -2,6 +2,10 @@
 session_start();
 include_once($_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/eShop/Logic/lib.php");
 
+if(!isLogedIn()){
+    include_once($path."Logic/autoLogin.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html>

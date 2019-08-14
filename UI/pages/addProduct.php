@@ -11,6 +11,10 @@ if(!isLogedIn()){
 if(!$_SESSION['user']->admin){
     header("location: ".$headerPath."index.php");
 }
+if(!isLogedIn()){
+    include_once($path."Logic/autoLogin.php");
+}
+
 $categorys = CategoryDAO::getAllCategorys();
 
 ?>
