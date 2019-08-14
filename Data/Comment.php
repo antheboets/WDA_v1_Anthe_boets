@@ -19,6 +19,9 @@ include_once($path."Data/Rating.php");
             $this->creationTime = $creationTime;
         }
 
+        private static function getUrl(){
+            return "http://dtsl.ehb.be/~anthe.boets/eShop/";
+        }
 
         public function drawComment($level){
             $level++;
@@ -50,4 +53,7 @@ include_once($path."Data/Rating.php");
             echo "</div>";
         }
     }
+
 ?>
+
+
