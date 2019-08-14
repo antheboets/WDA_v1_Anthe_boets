@@ -10,9 +10,7 @@ if(!isLogedIn()){
 
 $products = ProductDAO::getAllSmall();
 
-//forea ($product->rating as $ratings){
 
-//}
 ?>
     <!DOCTYPE html>
     <html>
@@ -29,6 +27,7 @@ $products = ProductDAO::getAllSmall();
         include_once($path."Logic/headerJsImport.php");
         ?>
         <script src="<?php echo $url; ?>UI/js/addToCart.js"></script>
+        <script src="<?php echo $url; ?>UI/js/allProducts.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css"  href="<?php echo $url; ?>UI/css/header.css">
         <link rel="stylesheet" type="text/css"  href="<?php echo $url; ?>UI/css/product.css">
@@ -40,8 +39,29 @@ include($path."/UI/component/header.php");
 <div class="container">
     <div class="row">
         <div class='col-md-4'>
-            <h1>Product details</h1>
+            <h1>Products</h1>
         </div>
+    </div>
+    <div class="row">
+        <div class='col-md-4'>
+            <form action="" method="GET" id="searchForm">
+                Search: <input list="searchList" name="search" id="search">
+            <datalist id="searchList">
+
+
+
+                </datalist>
+                <input type="submit" value="view">
+        </div>
+    </div>
+    <div class="row">
+        <?php
+        foreach ($products as $item){
+            echo "<div class='col-md-3' id='products'>";
+            $item->drawMainMenu();
+            echo "</div>";
+        }
+        ?>
     </div>
 </div>
 

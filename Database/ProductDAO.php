@@ -33,7 +33,7 @@ class ProductDAO
     }
     public static function getNameForSearch($name)
     {
-        return DatabaseFactory::getDatabase()->executeQuery("SELECT * FROM Product WHERE Name LIKE '%?%' AND Archived = 0;", array($name));
+        return DatabaseFactory::getDatabase()->executeQuery("SELECT ProductId, Name FROM Product WHERE Name LIKE '%?%' AND Archived = 0;", array($name));
     }
     public static function getAllSmall()
     {
@@ -92,6 +92,7 @@ class ProductDAO
             foreach ($rows as $row)
             {
                 $comments = CommentDAO::getAllCommentsOfProduct($row['ProductId']);
+
                 $category = new Category($row['CategoryId'], $row['CategoryName']);
                 $ratings = RatingDAO::getAllRatingsOfProduct($row['ProductId']);
                 $poducts[] =  new Product($row['ProductId'],$row['Name'],$row['Description'],$row['Image'],$row['Price'], $category,$ratings,$comments,false);

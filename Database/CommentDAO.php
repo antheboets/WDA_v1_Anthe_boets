@@ -4,7 +4,7 @@ include_once($path."Data/Comment.php");
 include_once($path."Data/Rating.php");
 class CommentDAO{
     public static function getAllCommentsOfProduct($ProductId){
-        $rows = DatabaseFactory::getDatabase()->executeQuery( "SELECT C.*, U.FirstName, U.LastName , R.Rating FROM Comment AS C INNER JOIN User AS U ON(C.UserId=U.UserId) INNER JOIN Rating AS R ON(C.ProductId=R.ProductId AND C.UserId=R.UserId) WHERE C.ProductId = '?' ORDER BY CreationTime ASC;",array($ProductId));
+        $rows = DatabaseFactory::getDatabase()->executeQuery( "SELECT C.*, U.FirstName, U.LastName , R.Rating FROM Comment AS C LEFT JOIN User AS U ON(C.UserId=U.UserId) LEFT JOIN Rating AS R ON(C.ProductId=R.ProductId AND C.UserId=R.UserId) WHERE C.ProductId = '?' ORDER BY CreationTime ASC",array($ProductId));
         return self::convertRowToObject($rows);
     }
 

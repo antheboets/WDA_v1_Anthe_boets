@@ -20,6 +20,11 @@ include_once($path."Data/ShoppingCartItem.php");
             }
             return $total;
         }
+
+
+        public function DrawShoppingCart(){
+
+        }
     }
 
 

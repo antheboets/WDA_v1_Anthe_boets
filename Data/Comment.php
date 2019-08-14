@@ -23,6 +23,7 @@ include_once($path."Data/Rating.php");
             return "http://dtsl.ehb.be/~anthe.boets/eShop/";
         }
 
+
         public function drawComment($level){
             $level++;
             if($level % 2 == 0 ){
@@ -37,7 +38,7 @@ include_once($path."Data/Rating.php");
                         echo "<p class='noBreak commentInfo'>Name: ".$this->user."</p>";
                         echo "<p class='noBreak commentInfo'>Rating: ".$this->rating."/10</p>";
                         echo "<p class='noBreak commentInfo'>Time: ".$this->creationTime."</p>";
-                        echo "<button class='commentInfo replyBtn'><a href='".$this->getUrl()."'>reply</a></button>";
+                        echo "<button class='commentInfo replyBtn'><a href='"."http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}"."#comments'>reply</a></button>";
                     echo "</div>";
                     echo "<div class='commentText col-md-10'>";
                         echo "<p class='noBreak'>".$this->text."</p>";

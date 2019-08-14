@@ -13,7 +13,6 @@ if($_SERVER["REQUEST_METHOD"] === 'GET') {
         if(!empty($_GET['id'])){
             $product = ProductDAO::getById($_GET['id']);
 
-
 $userRating = 10;
 if(isLogedIn()){
     foreach ($product->rating as $ratings){

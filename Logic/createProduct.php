@@ -1,12 +1,15 @@
 <?php
 //https://github.com/taniarascia/upload
+error_reporting(0);
 include_once($_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/eShop/Logic/lib.php");
 include_once($path."database/UserDAO.php");
 session_start();
+header("location: ".$headerPath."index.php");
 include_once($path."database/ProductDAO.php");
 if($_SERVER["REQUEST_METHOD"] === 'POST') {
     if(isset($_POST['name']) && isset($_POST['description']) && isset($_POST['category']) && isset($_POST['price'])){
         if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['category'])&& !empty($_POST['price'])){
+            header("location: ".$headerPath."UI/pages/addProduct.php");
             $errors = [];
             $extensions = ['jpg', 'jpeg', 'png'];
             $file_tmp = $_FILES['files']['tmp_name'][0];
@@ -31,17 +34,11 @@ if($_SERVER["REQUEST_METHOD"] === 'POST') {
             if (!in_array($file_ext, $extensions)) {
                 $errors[] = 'Extension not allowed: ' . $file_name . ' ' . $file_type;
             }
-            var_dump($errors);
-            if(empty($errors)){
+
                 $image = base64_encode(file_get_contents($file_tmp));
                 $product = new Product(0, $_POST['name'], $_POST['description'] ,$image, $_POST['price'],$category,NULL,NULL,0);
-                if(ProductDAO::create($product)){
+                ProductDAO::create($product);
 
-                }
-            }
-            else{
-
-            }
         }
     }
 }

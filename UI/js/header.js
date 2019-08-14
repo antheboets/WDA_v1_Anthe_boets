@@ -29,28 +29,21 @@ $(document).ready(function() {
 			$('#bLogout').click(function(){
 				logout();
 			});
-			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bSettings">Settings</a></li>');
-			$('#bSettings').click(function(){
-				settings();
-			});
 		}
 		if(isAdmin()){
-			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bAddProduct">Product Over View</a></li>');
+			$('#navbarButtons').append('<li class="nav-item"><a class="nav-link" id="bAddProduct">Add a product</a></li>');
 			$('#bAddProduct').click(function(){
 				addProduct();
 			});
 		}
 	}
 
-	function settings(){
-		window.location.href = url + "UI/Pages/Settings.php";
-	}
 
 	function logout(){
 		window.location.href = url +"Logic/logout.php";
 	}
 	function addProduct() {
-		window.location.href = url +"UI/allProducts.php";
+		window.location.href = url +"UI/pages/addProduct.php";
 	}
 
 

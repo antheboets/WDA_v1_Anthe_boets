@@ -5,11 +5,8 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav" id="navbarButtons">
-  			<li class="nav-item">
-    			<a class="nav-link" href="#">Store Front</a>
-  			</li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Products</a>
+                <a class="nav-link" href="<?php echo $url ;?>UI/pages/allProducts.php">Products</a>
             </li>
   			<li class="nav-item">
     			<a class="nav-link" href="<?php echo $url ;?>UI/pages/contact.php">Contact</a>

@@ -1,10 +1,16 @@
 .Product{
     border: black 1px solid;
+    margin-bottom: 5px;
 }
 .ProductImg{
     padding-right: 0px;
     padding-left: 0px;
     border-bottom: 1px solid black;
+}
+.ProductImgDetail{
+    padding-right: 0px;
+    padding-left: 0px;
+    border: 1px solid black;
 }
 .ProductText{
     font-size: 16px;
