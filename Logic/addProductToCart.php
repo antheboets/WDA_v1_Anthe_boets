@@ -21,13 +21,15 @@ if(empty(ProductDAO::getById($data->productId))){
     $errors[] = "productId doest exist";
 }
 if(empty($errors)){
-    if(ShoppingCartDAO::isItem($_SESSION['user']->id,$data->productId)){
+    if(ShoppingCartDAO::isItem($data->productId,$_SESSION['user']->id)){
         ShoppingCartDAO::updateItem($data->productId,$data->amount,$_SESSION['user']->id);
+        http_response_code(202);
     }
     else{
         ShoppingCartDAO::createItem($data->productId,$data->amount,$_SESSION['user']->id);
+        http_response_code(201);
     }
-    http_response_code(200);
+
 }
 else{
     http_response_code(400);
