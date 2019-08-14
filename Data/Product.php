@@ -39,6 +39,18 @@ include_once($path."Data/Category.php");
             echo "</a>";
             echo "</div>";
         }
+
+        public function calcRating(){
+            $total = 0;
+            if(sizeof($this->rating) == 0){
+                return 0;
+            }
+            foreach ($this->rating as $item){
+                $total += $item->rating;
+            }
+            $total = $total / sizeof($this->rating);
+            return round($total);
+        }
         public function drawImage($height, $width, $alt, $class){
             $base64 = 'data:image/;base64,' . base64_encode($this->image);
             echo "<img ";
