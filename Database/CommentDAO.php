@@ -8,6 +8,16 @@ class CommentDAO{
         return self::convertRowToObject($rows);
     }
 
+    public static function create($productId,$text,$userId, $replyId){
+        if($replyId == 0){
+            return DatabaseFactory::getDatabase()->executeQuery( "INSERT INTO Comment VALUES (0,'?','?','?',NULL,sysdate());",array($productId,$text,$userId));
+        }
+        else{
+            return DatabaseFactory::getDatabase()->executeQuery( "INSERT INTO Comment VALUES (0,'?','?','?',?,sysdate());",array($productId,$text,$userId,$replyId));
+        }
+
+    }
+
     private static function convertRowToObject($rows){
         if(!is_null($rows)){
             $comments = [];

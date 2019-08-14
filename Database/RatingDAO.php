@@ -8,20 +8,22 @@ class RatingDAO{
     }
 
     public static function isRatingId($productId,$userId){
-        $row = DatabaseFactory::getDatabase()->executeQuery("SELECT RatingId FROM Rating WHERE ProductId = '?' AND UserId = '?';", array($productId, $userId));
-        //$row = $result->fetch_array();
+        $result = DatabaseFactory::getDatabase()->executeQuery("SELECT RatingId FROM Rating WHERE ProductId = '?' AND UserId = '?';", array($productId, $userId));
+        $row = $result->fetch_array();
         if (!is_null($row)) {
             return $row['RatingId'];
         }
-        return false;
+        return 0;
     }
 
     public static function updateRating($rating,$userId,$productId){
+        var_dump(array($rating->rating,$rating->id,$userId,$productId));
         $result = DatabaseFactory::getDatabase()->executeQuery("UPDATE Rating SET Rating ='?' WHERE RatingId = '?'AND UserId='?' AND ProductId='?';",array($rating->rating,$rating->id,$userId,$productId));
         return $result;
     }
     public static function createRating($rating,$userId,$productId){
-        $result = DatabaseFactory::getDatabase()->executeQuery("INSERT INTO Rating VALUES RatingId= '?', Rating = '?', UserId='?', ProductId='?';",array($rating->id,$rating->rating,$userId,$productId));
+        var_dump(array($rating->rating,$userId,$productId));
+        $result = DatabaseFactory::getDatabase()->executeQuery("INSERT INTO Rating VALUES (NULL, '?', '?','?');",array($rating->rating,$userId,$productId));
         return $result;
     }
 
