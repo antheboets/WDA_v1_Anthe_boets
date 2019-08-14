@@ -2,7 +2,7 @@
 	session_start();
     include_once($_SERVER['DOCUMENT_ROOT']."/anthe.boets/public_html/eShop/Logic/lib.php");
 	include_once($path."database/UserDAO.php");
-    include_once($path."database/UserDAO.php");
+
 
 
     header("location: ".$headerPath."index.php");
