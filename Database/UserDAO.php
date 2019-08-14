@@ -29,7 +29,7 @@ class UserDAO{
     public static function getById($id)
     {
         $result = DatabaseFactory::getDatabase()->executeQuery("SELECT UserId,Name,Email  FROM User WHERE UserId = ?;", array($id));
-        return self::convertRowToObject(mysqli_fetch_array($result));
+        return self::convertRowToObject($result);
     }
 
     public static function checkCredentials($email,$hash)
