@@ -24,7 +24,7 @@ include_once($path."Database/DatabaseFactory.php");
          return $result;
      }
      public static function updateItem($productId,$amount,$userId){
-         $result = DatabaseFactory::getDatabase()->executeQuery("UPDATE ShoppingCartItems SET ProductId = '?', UserId='?', Amount = '?' ;",array($productId,$userId,$amount));
+         $result = DatabaseFactory::getDatabase()->executeQuery("UPDATE ShoppingCartItems SET Amount = '?' WHERE ProductId = '?' AND UserId='?';",array($amount,$productId,$userId));
          return $result;
      }
      private static function convertRowsToObjectForShoppingCartSession($rows){
