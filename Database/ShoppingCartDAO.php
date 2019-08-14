@@ -11,6 +11,22 @@ include_once($path."Database/DatabaseFactory.php");
         return self::convertRowsToObjectForShoppingCartSession($rows);
      }
 
+     public static function isItem($productId,$userId){
+         $result = DatabaseFactory::getDatabase()->executeQuery("SELECT ProductId, UserId FROM ShoppingCartItems WHERE ProductId = '?' AND UserId = '?';",array($productId,$userId));
+         $row = $result->fetch_array();
+         if(!is_null($row)){
+             return true;
+         }
+         return false;
+     }
+     public static function createItem($productId,$amount,$userId){
+         $result = DatabaseFactory::getDatabase()->executeQuery("INSERT INTO ShoppingCartItems VALUES ('?','?','?');",array($productId,$userId,$amount));
+         return $result;
+     }
+     public static function updateItem($productId,$amount,$userId){
+         $result = DatabaseFactory::getDatabase()->executeQuery("UPDATE ShoppingCartItems SET ProductId = '?', UserId='?', Amount = '?' ;",array($productId,$userId,$amount));
+         return $result;
+     }
      private static function convertRowsToObjectForShoppingCartSession($rows){
          if(!is_null($rows)){
             $items = [];
