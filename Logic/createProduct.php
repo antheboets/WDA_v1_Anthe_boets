@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] === 'POST') {
             if(!$_SESSION['user']->admin) {
                 $errors[] = "Not authenticated";
             }
-            https://stackoverflow.com/questions/14758191/how-to-use-filesfilesize
+            //https://stackoverflow.com/questions/14758191/how-to-use-filesfilesize
             define('MB', 1048576);
             if ($file_size > 20*MB) {
                 $errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
