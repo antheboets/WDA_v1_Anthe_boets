@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] === 'POST') {
                 $errors[] = 'Extension not allowed: ' . $file_name . ' ' . $file_type;
             }
 
-                $image = base64_encode(file_get_contents($file_tmp));
+                $image = file_get_contents($file_tmp);
                 $product = new Product(0, $_POST['name'], $_POST['description'] ,$image, $_POST['price'],$category,NULL,NULL,0);
                 ProductDAO::create($product);
 
